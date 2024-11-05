@@ -5,6 +5,7 @@ import game_framework
 import game_world
 import play_mode
 
+from pannel import Pannel
 
 def handle_events():
     events = get_events()
@@ -27,7 +28,7 @@ def handle_events():
 
 def init():
     global pannel
-    pannel = pannel()
+    pannel = Pannel()
     game_world.add_object(pannel, 3)
 
 def update():

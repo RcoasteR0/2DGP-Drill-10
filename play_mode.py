@@ -16,14 +16,12 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_mode(title_mode)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_i:
-            game_framework.change_mode(item_mode)
+            game_framework.push_mode(item_mode)
         else:
             boy.handle_event(event)
 
 def init():
     global boy
-
-    running = True
 
     grass = Grass()
     game_world.add_object(grass, 0)
