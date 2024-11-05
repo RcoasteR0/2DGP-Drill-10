@@ -2,7 +2,7 @@
 
 from pico2d import get_time, load_image, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT
 from state_machine import *
-from ball import Ball
+from ball import Ball, BigBall
 import game_world
 
 class Idle:
@@ -97,6 +97,7 @@ class Boy:
     def __init__(self):
         self.x, self.y = 400, 90
         self.face_dir = 1
+        self.item = None
         self.image = load_image('animation_sheet.png')
         self.state_machine = StateMachine(self)
         self.state_machine.start(Idle)
@@ -120,5 +121,9 @@ class Boy:
         self.state_machine.draw()
 
     def fire_ball(self):
-        ball = Ball(self.x, self.y, self.face_dir * 10)
-        game_world.add_object(ball)
+        if self.item == 'Ball':
+            ball = Ball(self.x, self.y, self.face_dir * 10)
+            game_world.add_object(ball)
+        if self.item == 'BigBall':
+            ball = BigBall(self.x, self.y, self.face_dir * 10)
+            game_world.add_object(ball)
