@@ -1,7 +1,4 @@
-from game_world import objects
-
-running = None
-stack = None
+import time
 
 
 def change_mode(mode):
@@ -47,7 +44,7 @@ def run(start_mode):
     stack = [start_mode]
     start_mode.init()
 
-    while (running):
+    while running:
         stack[-1].handle_events()
         stack[-1].update()
         stack[-1].draw()
@@ -56,4 +53,3 @@ def run(start_mode):
     while (len(stack) > 0):
         stack[-1].finish()
         stack.pop()
-
